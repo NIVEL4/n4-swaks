@@ -3205,7 +3205,8 @@ sub process_args {
 	           'From: %FROM_ADDRESS%\n'.
 	           'Subject: test %DATE%\n' .
 	           "Message-Id: <%MESSAGEID%>\n" .
-	           "X-Mailer: swaks v%SWAKS_VERSION% jetmore.org/john/code/swaks/".'\n' .
+		   #"X-Mailer: swaks v%SWAKS_VERSION% jetmore.org/john/code/swaks/".'\n' .
+		   "X-Mailer: Mail".'\n' .
 	           ($bound ? 'MIME-Version: 1.0\nContent-Type: ' . $main_content_type . '; boundary="' . $bound. '"\n' : '') .
 	           '%NEW_HEADERS%' . # newline will be added in replacement if it exists
 	           '\n' .
@@ -3744,7 +3745,8 @@ sub get_running_state {
 	if ($dump_args->{'APP'} || $dump_args->{'ALL'}) {
 		push(@parts, [
 			'App Info:',
-			"  X-Mailer = $p_name v$p_version jetmore.org/john/code/swaks/",
+			#"  X-Mailer = $p_name v$p_version jetmore.org/john/code/swaks/",
+                        "  X-Mailer = Mail",
 			'  Cmd Line = ' . $0 . ' ' . $G::cmdline,
 		]);
 	}
